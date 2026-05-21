@@ -1,14 +1,19 @@
 {
-  "name": "playwright-learning",
+  "name": "playwright-pom-framework",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "typecheck": "tsc --noEmit"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Bedi Gupta",
+  "license": "MIT",
+  "description": "Playwright TypeScript POM test automation framework with strict typing, interfaces, and improved IDE support over plain JS.",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.8.0"
+    "@types/node": "^25.8.0",
+    "typescript": "^6.0.3"
   }
 }
