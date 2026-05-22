@@ -15,7 +15,7 @@ export default class CheckboxPage {
    * Navigates to the checkboxes page.
    */
   async navigate(): Promise<void> {
-    await this.page.goto('/checkboxes');
+    await this.page.goto('/checkboxes', { waitUntil: 'domcontentloaded' });
   }
 
   /**
@@ -25,7 +25,7 @@ export default class CheckboxPage {
    * @returns True when the checkbox is checked.
    */
   async isChecked(index: number): Promise<boolean> {
-    return this.checkboxes.nth(index - 1).isChecked();
+    return this.getCheckboxByIndex(index).isChecked();
   }
 
   /**
@@ -34,6 +34,23 @@ export default class CheckboxPage {
    * @param index - One-based checkbox index.
    */
   async toggleCheckbox(index: number): Promise<void> {
-    await this.checkboxes.nth(index - 1).click();
+    await this.getCheckboxByIndex(index).click();
+  }
+
+  /**
+   * Gets the total number of checkboxes on the page.
+   *
+   * @returns Checkbox count.
+   */
+  async getCheckboxCount(): Promise<number> {
+    return this.checkboxes.count();
+  }
+
+  private getCheckboxByIndex(index: number): Locator {
+    if (index < 1) {
+      throw new Error(`Checkbox index must be one-based. Received: ${index}`);
+    }
+
+    return this.checkboxes.nth(index - 1);
   }
 }

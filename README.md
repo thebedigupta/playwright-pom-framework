@@ -270,7 +270,7 @@ npx playwright install
 Run all tests:
 
 ```bash
-npx playwright test
+npm test
 ```
 
 Run a specific test file:
@@ -282,19 +282,19 @@ npx playwright test tests/login.spec.ts
 Run tests in headed mode:
 
 ```bash
-npx playwright test --headed
+npm run test:headed
 ```
 
 Run tests on a specific browser:
 
 ```bash
-npx playwright test --project=chromium
+npm run test:chromium
 ```
 
 View the HTML report:
 
 ```bash
-npx playwright show-report
+npm run report
 ```
 
 ## Test Cases Covered
@@ -357,6 +357,7 @@ The HTML report shows:
 - Execution duration
 - Error messages on failure
 - Screenshots on failure when configured or captured
+- Videos retained for failed scenarios
 - Trace details when retries are enabled
 - Browser and project information
 

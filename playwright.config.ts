@@ -7,8 +7,16 @@ export default defineConfig({
   // Maximum time each test can run before it fails.
   timeout: 30000,
 
+  // Maximum time allowed for a Playwright assertion to pass.
+  expect: {
+    timeout: 5000,
+  },
+
   // Run tests from different files in parallel for faster execution.
   fullyParallel: true,
+
+  // Use a single worker in CI because the public demo app can throttle parallel requests.
+  workers: process.env.CI ? 1 : undefined,
 
   // Fail the build on CI when test.only is accidentally committed.
   forbidOnly: !!process.env.CI,
@@ -26,6 +34,10 @@ export default defineConfig({
 
     // Capture traces only when retrying a failed test.
     trace: 'on-first-retry',
+
+    // Keep lightweight debugging artifacts when a scenario fails.
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   // Browser projects used for cross-browser test execution.

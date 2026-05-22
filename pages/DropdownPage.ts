@@ -11,7 +11,7 @@ export default class DropdownPage {
    * Navigates to the dropdown page.
    */
   async navigate(): Promise<void> {
-    await this.page.goto('/dropdown');
+    await this.page.goto('/dropdown', { waitUntil: 'domcontentloaded' });
   }
 
   /**
@@ -30,5 +30,14 @@ export default class DropdownPage {
    */
   async getSelectedValue(): Promise<string> {
     return this.dropdownSelect.inputValue();
+  }
+
+  /**
+   * Gets the selected dropdown option label.
+   *
+   * @returns The visible label for the selected option.
+   */
+  async getSelectedLabel(): Promise<string> {
+    return this.dropdownSelect.locator('option:checked').innerText();
   }
 }

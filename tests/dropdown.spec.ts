@@ -17,11 +17,13 @@ test.describe('Dropdown Page Tests', () => {
     await dropdownPage.selectOption('1');
 
     expect(await dropdownPage.getSelectedValue()).toBe('1');
+    expect(await dropdownPage.getSelectedLabel()).toBe('Option 1');
   });
 
   test("should select 'Option 2' and verify", async (): Promise<void> => {
     await dropdownPage.selectOption('2');
 
     expect(await dropdownPage.getSelectedValue()).toBe('2');
+    expect(await dropdownPage.getSelectedLabel()).toBe('Option 2');
   });
 });

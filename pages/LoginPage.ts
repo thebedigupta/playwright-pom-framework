@@ -19,7 +19,7 @@ export default class LoginPage {
    * Navigates to the login page.
    */
   async navigate(): Promise<void> {
-    await this.page.goto('/login');
+    await this.page.goto('/login', { waitUntil: 'domcontentloaded' });
   }
 
   /**

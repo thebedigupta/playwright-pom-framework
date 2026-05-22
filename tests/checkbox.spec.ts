@@ -10,6 +10,7 @@ test.describe('Checkbox Page Tests', () => {
   });
 
   test('should show both checkboxes', async (): Promise<void> => {
+    expect(await checkboxPage.getCheckboxCount()).toBe(2);
     await expect(checkboxPage.firstCheckbox).toBeVisible();
     await expect(checkboxPage.secondCheckbox).toBeVisible();
   });
